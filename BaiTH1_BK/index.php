@@ -29,7 +29,7 @@
                             // Duyệt và xuất kết quả
                             if(mysqli_num_rows($lop) > 0){
                                 while($l = mysqli_fetch_assoc($lop)){
-                                echo "<a class=\"list-group-item\" href=\"index.php?id=" . $l["id"] . "\">" . $l["tenlop"] . "</a>";
+                                echo "<a class=\"list-group-item\" href=\"index.php?id=" . $l["id"] . "\">" . $l["lop"] . "</a>";
                                 }
                             }
                             ?>
@@ -41,10 +41,12 @@
                         <table class="table table-hover">
                         <tr><th>MSSV</th><th>Họ tên</th><th>Email</th><th>Thao tác</th></tr>
                             <?php
-                            $sql = "select sv.*, l.tenlop from sinhvien sv, lop l where sv.lopid = l.id ";
+                            $sql = "select sv.*, l.lop from sinhvien sv, lop l where sv.lopid = l.id ";
                             if(isset ($_GET["id"])){
                                 $sql=$sql . "and lopid=" . $_GET["id"];
                             }
+
+                            
                             $sinhvien = mysqli_query($conn, $sql);
                             if(mysqli_num_rows($sinhvien) > 0){
                                 while($sv = mysqli_fetch_assoc($sinhvien)){
@@ -52,7 +54,7 @@
                                 echo "<td>". $sv["mssv"] ."</td>";
                                 echo "<td>". $sv["hoten"] . "</td>";
                                 echo "<td>". $sv["email"] . "</td>";
-                                echo "<td>". $sv["tenlop"] . "</td>";
+                                echo "<td>". $sv["lop"] . "</td>";
                                 echo "<td><a href=\"index.php\"><button type=\"button\" class=\"btn btn-success\">Xóa</button></a></td>";
                                 echo "<td><a href=\"index.php\"><button type=\"button\" class=\"btn btn-warning\">Sửa</button></a></td>";
                                 echo "</tr>";
