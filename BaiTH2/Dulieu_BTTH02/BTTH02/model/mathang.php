@@ -163,5 +163,39 @@ class MATHANG{
         }
     }
 
+    // Lấy danh mục theo id
+    public function updateluotxem($id, $luotclick){
+        $dbcon = DATABASE::connect();
+        try{
+            $sql = "UPDATE mathang SET luotxem=:luotxem WHERE id=:id";
+            $cmd = $dbcon->prepare($sql);
+            $cmd->bindValue(":luotxem", $luotclick);
+            $cmd->bindValue(":id", $id);
+            $cmd->execute();
+        }
+        catch(PDOException $e){
+            $error_message = $e->getMessage();
+            echo "<p>Lỗi truy vấn: $error_message</p>";
+            exit();
+        }
+    }
+
+    // Sắp xếp mặt hàng theo lượt xem
+    public function sapxeptheoluotxem(){
+        $dbcon = DATABASE::connect();
+        try{
+            $sql = "SELECT * FROM mathang ORDER BY luotxem";
+            $cmd = $dbcon->prepare($sql);
+            $cmd->execute();
+            $result = $cmd->fetch();             
+            return $result;
+        }
+        catch(PDOException $e){
+            $error_message = $e->getMessage();
+            echo "<p>Lỗi truy vấn: $error_message</p>";
+            exit();
+        }
+    }
+
 }
 ?>

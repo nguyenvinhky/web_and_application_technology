@@ -29,7 +29,7 @@
                             // Duyệt và xuất kết quả
                             if(mysqli_num_rows($lop) > 0){
                                 while($l = mysqli_fetch_assoc($lop)){
-                                echo "<a class=\"list-group-item\" href=\"index.php?id=" . $l["id"] . "\">" . $l["lop"] . "</a>";
+                                    echo "<a class=\"list-group-item\" href=\"index.php?id=" . $l["id"] . "\">" . $l["lop"] . "</a>";
                                 }
                             }
                             ?>
@@ -46,27 +46,23 @@
                                 $sql=$sql . "and lopid=" . $_GET["id"];
                             }
 
-                            
                             $sinhvien = mysqli_query($conn, $sql);
                             if(mysqli_num_rows($sinhvien) > 0){
                                 while($sv = mysqli_fetch_assoc($sinhvien)){
-                                echo "<tr>";
-                                echo "<td>". $sv["mssv"] ."</td>";
-                                echo "<td>". $sv["hoten"] . "</td>";
-                                echo "<td>". $sv["email"] . "</td>";
-                                echo "<td>". $sv["lop"] . "</td>";
-                                echo "<td><a href=\"index.php\"><button type=\"button\" class=\"btn btn-success\">Xóa</button></a></td>";
-                                echo "<td><a href=\"index.php\"><button type=\"button\" class=\"btn btn-warning\">Sửa</button></a></td>";
-                                echo "</tr>";
+                                    echo "<tr>";
+                                    echo "<td>". $sv["mssv"] ."</td>";
+                                    echo "<td>". $sv["hoten"] . "</td>";
+                                    echo "<td>". $sv["email"] . "</td>";
+                                    echo "<td>". $sv["lop"] . "</td>";
+                                    echo "<td><a href=\"index.php\"><button type=\"button\" class=\"btn btn-success\">Xóa</button></a></td>";
+                                    echo "<td><a href=\"index.php\"><button type=\"button\" class=\"btn btn-warning\">Sửa</button></a></td>";
+                                    echo "</tr>";
                                 }
                             }
                             ?>
                     </div>
-
                     <a href="add.php"><button type="button" class="btn btn-primary">Thêm</button></a>
-                    
                 </div>
-                    
             </div>
         </div>
     </body>

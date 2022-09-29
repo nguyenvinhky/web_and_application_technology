@@ -14,12 +14,13 @@
 ?>
 
 <!-- ================================== -->
+
 <div class="container">
 
   <?php foreach ($valuesDM as $dm) {
     // code...
   ?>
-  <h3><a href=""><?php echo $dm['tendanhmuc'] ?><span class="glyphicon glyphicon-triangle-right"></span></a></h3>
+  <h3><a href="<?php echo 'group.php?id='.$dm['id']; ?>"><?php echo $dm['tendanhmuc'] ?><span class="glyphicon glyphicon-triangle-right"></span></a></h3>
   <div class="row">
     <?php 
         foreach($valueMH as $mh){
@@ -34,9 +35,9 @@
             <?php echo $dm['tendanhmuc'] ?>
           </a>  
         </div>
-        <div class="panel-body"><a href=""><img src="<?php echo $mh['hinhanh'] ?>" class="img-responsive fake" alt="Tên hàng"></a>
+        <div class="panel-body"><a href="<?php echo 'detail.php?idmh='.$mh['id'].'&danhmuc_id='.$mh['danhmuc_id']; ?>"><img src="<?php echo $mh['hinhanh'] ?>" class="img-responsive fake" alt="Tên hàng"></a>
         </div>
-        <div class="panel-footer"><a href=""><?php echo $mh['tenmathang'] ?></a></div>
+        <div class="panel-footer"><a href="<?php echo 'detail.php?idmh='.$mh['id'].'&danhmuc_id='.$mh['danhmuc_id']; ?>"><?php echo $mh['tenmathang'] ?></a></div>
       </div>
     </div>
     <?php } ?>
