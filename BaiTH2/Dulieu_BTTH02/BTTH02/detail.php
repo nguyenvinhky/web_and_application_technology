@@ -40,7 +40,6 @@
 
   //Sắp xếp theo tăng dần lượt xem
   $sapxep = $mh->sapxeptheoluotxem();
-
   require_once("top.php");
 ?>
 
@@ -50,9 +49,10 @@
         <div class="col-md-8">
             <div class="row">
               <div class="col-sm-4">
-                  <div class="panel panel-warning">
+                  <h4 style="color:blue"><b>THÔNG TIN CHI TIẾT</b></h4>
+                  <div class="panel panel-default">
                       <div class="panel-heading">
-                        <a href=""><?php echo $getmh['tenmathang']; ?></a>
+                        <a href=""><?php echo '<b>'.$getmh['tenmathang'].'</b>'; ?></a>
                       </div>
                   </div>
                   <div class="panel panel-body">
@@ -67,16 +67,17 @@
             </div>
 
             <div class="row">
+            <h4 style="color:blue"><b>SẢN PHẨM CÙNG LOẠI: <?php echo $namedanhmuc; ?></b></h4>
               <?php foreach ($valueMH as $objectMH) {
                         if($objectMH['danhmuc_id'] == $getdanhmuc_id && $objectMH['id'] != $idmh){?>
                 <div class="col-sm-4">
-                  <div class="panel panel-warning">
+                  <div class="panel panel-info">
                       <div class="panel-heading">
-                        <a href=""><?php echo $objectMH['tenmathang']; ?></a>
+                        <a href="<?php echo 'detail.php?idmh='.$objectMH['id'].'&danhmuc_id='.$objectMH['danhmuc_id']; ?>"><?php echo '<b>'.$objectMH['tenmathang'].'</b>'; ?></a>
                       </div>
                   </div>
                   <div class="panel panel-body">
-                      <a href=""><img src="<?php echo $objectMH['hinhanh']; ?>" alt="" class="img-responsive fake"></a>
+                      <a href="<?php echo 'detail.php?idmh='.$objectMH['id'].'&danhmuc_id='.$objectMH['danhmuc_id']; ?>"><img src="<?php echo $objectMH['hinhanh']; ?>" alt="" class="img-responsive fake"></a>
                       <div>Giá bán: <span class="text-danger"><?php echo number_format($objectMH['giaban']).' VNĐ'; ?></span></div>
                   </div>
                   <div class="panel panel-footer" align="center">
@@ -88,18 +89,18 @@
             </div>
         </div>
         <div class="col-md-4">
-              <h3 style="color:blue"><b>Nổi bật</b></h3>
-              <?php foreach ($valueMH as $objectMH) {
+              <h3 style="color:blue"><b>SẢN PHẨM NỔI BẬT</b></h3>
+              <?php foreach ($sapxep as $sort) {
                       ?>
-                <div class="col-sm-9">
-                  <div class="panel panel-primary">
+                <div class="col-sm-10">
+                  <div class="panel panel-success">
                       <div class="panel-heading">
-                        <a style="color:white" href=""><?php echo $objectMH['tenmathang']; ?></a>
+                        <a style="color:BLACK" href="<?php echo 'detail.php?idmh='.$sort['id'].'&danhmuc_id='.$sort['danhmuc_id']; ?>"><?php echo '<b>'.$sort['tenmathang'].'</b>'; ?></a>
                       </div>
                   </div>
                   <div class="panel panel-body">
-                      <a href=""><img src="<?php echo $objectMH['hinhanh']; ?>" alt="" class="img-responsive fake"></a>
-                      <div>Giá bán: <span class="text-danger"><?php echo number_format($objectMH['giaban']).' VNĐ'; ?></span></div>
+                      <a href="<?php echo 'detail.php?idmh='.$sort['id'].'&danhmuc_id='.$sort['danhmuc_id']; ?>"><img src="<?php echo $sort['hinhanh']; ?>" alt="" class="img-responsive fake"></a>
+                      <div>Giá bán: <span class="text-danger"><?php echo number_format($sort['giaban']).' VNĐ'; ?></span></div>
                   </div>
                 </div>
               <?php }?>

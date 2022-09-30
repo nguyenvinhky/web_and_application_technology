@@ -184,10 +184,10 @@ class MATHANG{
     public function sapxeptheoluotxem(){
         $dbcon = DATABASE::connect();
         try{
-            $sql = "SELECT * FROM mathang ORDER BY luotxem";
+            $sql = "SELECT * FROM mathang ORDER BY luotxem DESC LIMIT 4";
             $cmd = $dbcon->prepare($sql);
             $cmd->execute();
-            $result = $cmd->fetch();             
+            $result = $cmd->fetchAll();
             return $result;
         }
         catch(PDOException $e){
